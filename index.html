@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080b10" />
+  <title>APEX DRIVE — Road to the summit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="world" aria-label="Animated mountain racing scene"></canvas>
+  <div class="scene-vignette"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Apex Drive home"><span class="brand-mark">A</span><span>APEX<span class="brand-light">DRIVE</span><small>WORLD TOUR</small></span></a>
+    <nav class="main-nav"><button class="nav-link active" data-view="home">THE TOUR</button><button class="nav-link" data-view="garage">GARAGE</button><button class="nav-link" data-view="levels">LEVELS</button></nav>
+    <div class="player-stats"><div class="stat-pill"><span class="coin-icon">◆</span><strong id="coin-count">2,450</strong></div><div class="profile"><span class="profile-avatar">JD</span><span><b>J. DRIVER</b><small>ROOKIE · LVL 01</small></span><i class="online-dot"></i></div></div>
+  </header>
+
+  <main class="home-view view active" id="home-view">
+    <section class="hero-copy">
+      <div class="eyebrow"><span class="eyebrow-line"></span> SEASON 01 <span class="eyebrow-dot">·</span> THE ALPINE RUN</div>
+      <h1>CHASE<br />THE <em>HORIZON.</em></h1>
+      <p class="hero-description">Every turn tells a story. Take the wheel, find your line, and make the mountain yours.</p>
+      <div class="hero-actions"><button class="primary-btn" id="play-button"><span>START YOUR TOUR</span><span class="button-arrow">↗</span></button><button class="text-btn" id="quick-race"><span class="play-small">▶</span> QUICK RACE</button></div>
+      <div class="tour-progress"><div class="progress-copy"><span>YOUR JOURNEY</span><b><span id="progress-level">01</span> <small>/ 121</small></b></div><div class="progress-track"><span id="progress-fill"></span></div><div class="progress-meta"><span>ALPINE PASS</span><span>NEXT: COASTAL HIGHWAY <b>›</b></span></div></div>
+    </section>
+    <section class="hero-art" aria-label="Race preview">
+      <div class="art-label"><span class="live-dot"></span> OPEN ROAD <span class="art-separator">/</span> ALPINE PASS</div>
+      <div class="art-caption"><span>01</span><span class="caption-rule"></span><span>THE FIRST ASCENT</span></div>
+      <div class="corner-tag">SWITZERLAND<br /><b>46° 32' N</b></div>
+      <div class="car-spec"><span class="spec-label">FEATURED RIDE</span><strong id="featured-car">R8 V10 COUPÉ</strong><span>QUATTRO AWD <i>·</i> 562 HP</span></div>
+    </section>
+    <section class="bottom-deck">
+      <button class="feature-card" id="continue-card"><span class="card-index">01 <i>—</i> 121</span><span class="card-icon">↗</span><span class="card-title">CONTINUE<br />YOUR TOUR</span><span class="card-foot">ALPINE PASS <b>›</b></span></button>
+      <button class="feature-card" data-open="garage"><span class="card-index">YOUR COLLECTION</span><span class="card-icon garage-icon">⌁</span><span class="card-title">THE<br />GARAGE</span><span class="card-foot"><span id="car-count">06 CARS</span> <b>›</b></span></button>
+      <div class="weekly-card"><span class="weekly-label"><span class="live-dot"></span> WEEKLY CHALLENGE</span><strong>NO BRAKES.<br /><em>NO LIMITS.</em></strong><span class="weekly-bottom">ENDS IN <b>2D 14H</b><span class="challenge-arrow">↗</span></span></div>
+      <div class="conditions"><span>ROAD CONDITIONS</span><strong><i class="sun-icon">☼</i> CLEAR</strong><small>18° C <span>·</span> WIND 4 KM/H</small></div>
+    </section>
+  </main>
+
+  <main class="game-view view" id="game-view">
+    <div class="game-top"><button class="back-btn" id="exit-race">← <span>EXIT RACE</span></button><div class="race-title"><span>STAGE <b id="race-level">01</b></span><strong id="race-location">ALPINE PASS</strong></div><button class="pause-btn" id="pause-button"><span>Ⅱ</span> PAUSE</button></div>
+    <div class="race-hud"><div class="hud-box speed-box"><span>SPEED</span><strong><span id="speed-value">000</span><small> KM/H</small></strong><div class="speed-meter"><i id="speed-fill"></i></div></div><div class="hud-box distance-box"><span>DISTANCE</span><strong><span id="distance-value">0</span><small> M</small></strong><div class="distance-meter"><i id="distance-fill"></i></div></div><div class="hud-box score-box"><span>RUN SCORE</span><strong id="score-value">000000</strong></div><div class="race-coins"><span class="coin-icon">◆</span><b id="race-coins">0</b></div></div>
+    <div class="race-toast" id="race-toast"></div>
+    <div class="game-bottom"><div class="boost-meter"><span>NITRO</span><div class="boost-track"><i id="boost-fill"></i></div><span class="boost-hint">SPACE / ⚡</span></div><div class="touch-controls"><button class="steer" data-steer="-1" aria-label="Steer left">‹</button><button class="nitro-button" id="nitro-button" aria-label="Nitro boost">⚡</button><button class="steer" data-steer="1" aria-label="Steer right">›</button></div><div class="controls-hint">← → STEER <span>·</span> SPACE NITRO</div></div>
+    <div class="race-overlay" id="pause-overlay"><div class="overlay-card"><span class="eyebrow">TAKE A BREATHER</span><h2>RACE<br /><em>PAUSED.</em></h2><button class="primary-btn" id="resume-button"><span>BACK TO IT</span><span class="button-arrow">↗</span></button><button class="overlay-text-btn" id="quit-button">RETURN TO TOUR</button></div></div>
+    <div class="race-overlay" id="result-overlay"><div class="overlay-card result-card"><span class="eyebrow" id="result-kicker">STAGE COMPLETE</span><h2 id="result-title">NICE<br /><em>DRIVING.</em></h2><div class="result-stats"><div><span>FINAL SCORE</span><b id="result-score">0</b></div><div><span>DISTANCE</span><b id="result-distance">0 M</b></div><div><span>REWARD</span><b class="reward-text">+ <span id="result-reward">0</span> ◆</b></div></div><button class="primary-btn" id="next-stage"><span>CONTINUE TOUR</span><span class="button-arrow">↗</span></button><button class="overlay-text-btn" id="result-home">BACK TO TOUR</button></div></div>
+  </main>
+
+  <section class="panel-view view" id="garage-view"><div class="panel-header"><div><span class="eyebrow">BUILT FOR THE OPEN ROAD</span><h2>YOUR <em>GARAGE.</em></h2></div><button class="close-panel" data-view="home">×</button></div><div class="garage-layout"><div class="car-display"><div class="car-display-glow"></div><div class="garage-car-shape" id="garage-car-shape"><span class="car-window"></span><span class="car-light"></span></div><div class="car-display-name"><span id="garage-brand">AUDI</span><strong id="garage-model">R8 V10</strong></div><div class="garage-number" id="garage-number">01</div></div><div class="garage-info"><span class="eyebrow" id="garage-category">SPORT CLASS</span><h3 id="garage-title">R8 <em>V10</em></h3><div class="car-description" id="garage-description">Precision-engineered for the perfect racing line. All-wheel drive grip meets mid-engine balance.</div><div class="car-stats"><div><span>TOP SPEED</span><div class="stat-bar"><i id="stat-speed"></i></div></div><div><span>ACCELERATION</span><div class="stat-bar"><i id="stat-accel"></i></div></div><div><span>HANDLING</span><div class="stat-bar"><i id="stat-handling"></i></div></div></div><div class="garage-select-row"><button class="primary-btn" id="select-car"><span>SELECT THIS CAR</span><span class="button-arrow">↗</span></button><span class="owned-label" id="owned-label">OWNED</span></div><div class="car-picker" id="car-picker"></div></div></div></section>
+
+  <section class="panel-view view" id="levels-view"><div class="panel-header"><div><span class="eyebrow">121 STAGES · 5 WORLDS</span><h2>THE <em>TOUR.</em></h2></div><button class="close-panel" data-view="home">×</button></div><div class="level-worlds" id="level-worlds"></div><div class="level-grid" id="level-grid"></div></section>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="game.js"></script>
+</body>
+</html>
